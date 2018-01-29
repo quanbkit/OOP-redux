@@ -4,3 +4,10 @@ export const add = (value) => {
         value: value
     }
 }
+
+export const changeValue = (value) => {
+    return {
+        type: 'CHANGE',
+        value: value + 1
+    }
+}

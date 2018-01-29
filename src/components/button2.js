@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonController from './ButtonController';
+import { ButtonController } from './ButtonController';
 
 export default class Button2 extends ButtonController {
     render() {

@@ -1,22 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { add } from './action'
 
 export class ButtonController extends React.Component {
-    onClick(value) {
-        console.log(value);
-    }
-    
     ownState() {
+        if(this.props.number == null){
+            return 0;
+        }
         return this.props.number
     }
-}
 
-const mapStateToProps = state => {
-    return {
-        number: state.rootReducer.number,
+    getObjectConnect(state){
+        return {
+            number: state.rootReducer.number,
+        }
+    }
+
+    getDispathToProps(dispatch){
+        return {
+            add: (item) => {
+                dispatch(add(item))
+            }
+        }
+    }
+
+    mapStateToProps = state => {
+        return this.getObjectConnect(state);
+    }
+
+    mapDispatchToProps = (dispatch, ownProps) => {
+        return this.getDispathToProps(dispatch);
     }
 }
-
-export default connect(mapStateToProps)(ButtonController);
+var btn = new ButtonController();
+export default connect(btn.mapStateToProps, btn.mapDispathToProps)(ButtonController);
 
 
